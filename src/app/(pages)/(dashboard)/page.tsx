@@ -1,15 +1,19 @@
-import { Fragment } from 'react';
+import Link from 'next/link';
 //import { Container, Col, Row, Button } from 'react-bootstrap';
 
 const Home = () => {
-  <Fragment>
-    <div className='bg-primary pt-10 pb-21'></div>
-    {/* <Container fluid className='mt-n22 px-6'>
-        <Row>
-                <Col lg={12} md={12} xs={12}></Col>
-                </Row>
-      </Container> */}
-  </Fragment>;
+  return (
+    <>
+      <div className='container'>
+        <Link href='/tournaments/create' className='button'>
+          Register Tournament
+        </Link>
+        <Link href='/tournaments' className='button'>
+          View Tournaments
+        </Link>
+      </div>
+    </>
+  );
 };
 
 export default Home;
