@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Form, Col, Row, Button } from 'react-bootstrap';
 
