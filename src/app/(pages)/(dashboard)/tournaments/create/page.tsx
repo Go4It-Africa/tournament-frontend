@@ -34,7 +34,7 @@ const CreateTournament = () => {
     e.preventDefault();
     e.stopPropagation();
     // Handle form data submission here
-    console.log('Form submitted!', e.target.tournament_name.value);
+    //console.log('Form submitted!', e.target.tournament_name.value);
   };
 
   return (
