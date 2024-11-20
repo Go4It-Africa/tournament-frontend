@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 //import '@/styles/global.css';
 
 export const metadata: Metadata = {
