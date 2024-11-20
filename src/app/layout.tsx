@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 //import '@/styles/global.css';
 
 export const metadata: Metadata = {
-  title: 'Go4It - Elevate your sports academy',
+  title: 'Go4It Tournaments - Manage your tournaments',
   description: '',
   keywords: '',
 };
