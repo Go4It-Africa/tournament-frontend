@@ -8,6 +8,9 @@ const Home = () => {
         <Link href='/tournaments/create' className='button'>
           Register Tournament
         </Link>
+        <Link href='/clubs/create' className='button'>
+          Register Club
+        </Link>
         <Link href='/tournaments' className='button'>
           View Tournaments
         </Link>
