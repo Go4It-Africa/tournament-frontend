@@ -1,5 +1,28 @@
+'use client';
+import { useState, useEffect } from 'react';
+
 import Link from 'next/link';
 const TournamentsPage = () => {
+  const [players, setPlayers] = useState([
+    {
+      first_name: '',
+      last_name: '',
+      date_of_birth: '',
+      gender: '',
+      weight: '',
+      type_of_sport: '',
+      //club_id,
+      position: '',
+    },
+  ]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/v1/players/')
+      .then((response) => response.json())
+      .then((data) => setPlayers(data.data))
+      .catch((error) => console.log(error));
+  }, []);
+
   return (
     <>
       <div className='container'>
@@ -29,27 +52,40 @@ const TournamentsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className='mr-8'>1</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td className='mr-8'>Go4IT Tournament</td>
-                  <td>
-                    <span className='mr-2'>
-                      <Link href='/players/create' className=''>
-                        View
-                      </Link>
-                    </span>
-                    {/* <span className='mr-2'>Edit</span>
-                    <span className='mr-2'>Delete</span> */}
-                  </td>
-                </tr>
+                {players.map((player, index) => {
+                  const {
+                    first_name,
+                    last_name,
+                    date_of_birth,
+                    gender,
+                    weight,
+                    type_of_sport,
+                    //club_id,
+                    position,
+                  } = player;
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{first_name}</td>
+                      <td>{last_name}</td>
+                      <td>{date_of_birth}</td>
+                      <td>{gender}</td>
+                      <td>{weight}</td>
+                      <td>{type_of_sport}</td>
+                      <td>{'Fusion'}</td>
+                      <td>{position}</td>
+                      <td>
+                        <span className='mr-2'>
+                          <Link href={`/players/${index + 1}`} className=''>
+                            View
+                          </Link>
+                        </span>
+                        {/* <span className='mr-2'>Edit</span>
+                                      <span className='mr-2'>Delete</span> */}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
