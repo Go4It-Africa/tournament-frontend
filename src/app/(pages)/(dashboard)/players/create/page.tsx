@@ -9,13 +9,16 @@ const CreatePlayer = () => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
-    date_of_birth: '',
+    date_of_birth: new Date().toISOString().split('T')[0],
     gender: 'Male',
     weight: '',
     type_of_sport: 'Football',
     club_id: 1,
     position: 'Attacker',
   });
+  const [apiError, setApiError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   //   const [validationErrors, setValidationErrors] = useState({
   //     first_name: '',
@@ -74,9 +77,6 @@ const CreatePlayer = () => {
   const handleSelectDataChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
 
-    console.log('THE NAME:', name, 'THE VALUE', value);
-    //handleFormErrors(name, value);
-
     setFormData((prevData) => ({ ...prevData, [name]: value.trim() }));
   };
 
@@ -85,12 +85,47 @@ const CreatePlayer = () => {
     e.stopPropagation();
     // Handle form data submission here
     console.log('Form Submitted', formData);
+
+    setIsSubmitting(true);
+
+    return fetch(`http://localhost:3000/v1/players`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setFormData({
+          first_name: '',
+          last_name: '',
+          date_of_birth: '',
+          gender: 'Male',
+          weight: '',
+          type_of_sport: 'Football',
+          club_id: 1,
+          position: 'Attacker',
+        });
+
+        setSuccess(true);
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        //console.error('Error:', error);
+        setApiError(error.message);
+        setIsSubmitting(false);
+      });
   };
 
   return (
     <>
       <div className='form-step'>
-        <h2>Create Player</h2>
+        <h2 className='mb-4'>Create Player</h2>
+        {apiError && <p className='mb-4 text-red-600'>{apiError}</p>}
+        {success && (
+          <p className='mb-4 text-success'>Player created successfully!</p>
+        )}
         <Form onSubmit={handleSubmit}>
           {/* Tournament Name */}
           <Form.Group controlId='playerFirstName' className='mb-3'>
@@ -191,7 +226,8 @@ const CreatePlayer = () => {
 
           {/* Submit Button */}
           <Button variant='primary' type='submit'>
-            Submit
+            {!isSubmitting && 'Submit'}
+            {isSubmitting && 'Submitting...'}
           </Button>
         </Form>
       </div>
