@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 //import { FormSelect } from '../../../../../_components/widgets/form-select/FormSelect';
 
 const CreatePlayer = () => {
@@ -225,10 +225,10 @@ const CreatePlayer = () => {
           </Form.Group>
 
           {/* Submit Button */}
-          <Button variant='primary' type='submit'>
+          <button type='submit' className='button'>
             {!isSubmitting && 'Submit'}
             {isSubmitting && 'Submitting...'}
-          </Button>
+          </button>
         </Form>
       </div>
     </>
