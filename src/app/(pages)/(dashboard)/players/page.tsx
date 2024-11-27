@@ -26,8 +26,8 @@ const TournamentsPage = () => {
   return (
     <>
       <div className='container'>
-        <div className='flex justify-between'>
-          <h1>View All Players</h1>
+        <div className='flex justify-between my-[1.25rem]'>
+          <h3 className='text-left'>Players</h3>
           <div>
             <Link href='/players/create' className=''>
               Create Player
@@ -35,8 +35,8 @@ const TournamentsPage = () => {
           </div>
         </div>
         <div className='flex '>
-          <div className='flex justify-between items-center'>
-            <table>
+          <div className='table-container'>
+            <table className='stats-table'>
               <thead>
                 <tr>
                   <th>#</th>
@@ -76,7 +76,13 @@ const TournamentsPage = () => {
                       <td>{position}</td>
                       <td>
                         <span className='mr-2'>
-                          <Link href={`/players/${index + 1}`} className=''>
+                          <Link
+                            href={{
+                              pathname: `/players/${index + 1}`,
+                              query: player,
+                            }}
+                            className=''
+                          >
                             View
                           </Link>
                         </span>
