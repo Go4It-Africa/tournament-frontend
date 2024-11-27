@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <>
-      <div className='container'>
+      <div className='container flex justify-center items-center mt-[50%] -translate-y-1/2'>
         {/* <Link href='/tournaments/create' className='button'>
           Register Tournament
         </Link>

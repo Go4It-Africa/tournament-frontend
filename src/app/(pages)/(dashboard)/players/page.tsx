@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import Link from 'next/link';
+
 const TournamentsPage = () => {
   const [players, setPlayers] = useState([
     {
