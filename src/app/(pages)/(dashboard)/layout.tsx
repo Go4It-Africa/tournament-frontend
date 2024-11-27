@@ -1,6 +1,6 @@
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
+    <div className='container'>
       <div>{children}</div>
     </div>
   );
