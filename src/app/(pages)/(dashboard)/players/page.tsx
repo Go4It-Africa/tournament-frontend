@@ -18,7 +18,8 @@ const TournamentsPage = () => {
   ]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/v1/players/')
+    //fetch('http://localhost:3000/v1/players/')
+    fetch('https://go4it-backend-08e4d2013568.herokuapp.com/v1/players/')
       .then((response) => response.json())
       .then((data) => setPlayers(data.data))
       .catch((error) => console.log(error));

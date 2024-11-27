@@ -88,13 +88,17 @@ const CreatePlayer = () => {
 
     setIsSubmitting(true);
 
-    return fetch(`http://localhost:3000/v1/players`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
+    //return fetch(`http://localhost:3000/v1/players`, {
+    return fetch(
+      'https://go4it-backend-08e4d2013568.herokuapp.com/v1/players',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      }
+    )
       .then((response) => response.json())
       .then(() => {
         setFormData({
