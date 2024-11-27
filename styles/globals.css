@@ -21,6 +21,7 @@ body {
   display: flex;
   height: 100vh;
   margin: 0;
+  overflow-x: hidden;
 }
 .container {
   text-align: center;
@@ -37,7 +38,7 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #6c63ff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -45,5 +46,214 @@ h1 {
   transition: background-color 0.3s ease;
 }
 .button:hover {
-  background-color: #0056b3;
+  background-color: #6c63ff;
+}
+.table-container {
+  width: 100%; /* Matches the width of the device */
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.stats-table {
+  width: 100%; /* Ensures the table stays within the viewport */
+  border-collapse: collapse;
+  table-layout: fixed; /* Keeps consistent column widths */
+  background: #ffffff;
+}
+
+.stats-table th,
+.stats-table td {
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #e6e6e6;
+  min-width: 80px; /* Ensures columns remain legible */
+  word-wrap: break-word; /* Prevents text from overflowing */
+  overflow: hidden;
+}
+
+.stats-table th {
+  background: #6c63ff;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.stats-table td {
+  font-size: 14px;
+  color: #333;
+}
+
+.team-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  white-space: nowrap; /* Prevents text wrapping for team name */
+}
+
+.sticky {
+  position: sticky;
+  left: 0;
+  background: #ffffff; /* Matches table background for smooth effect */
+  z-index: 1;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for clarity */
+}
+
+@media screen and (max-width: 600px) {
+  .stats-table th,
+  .stats-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .stats-table {
+    table-layout: auto;
+  }
+}
+
+.player-card {
+  background: linear-gradient(135deg, #3a79ff, #72ffba);
+  border-radius: 16px;
+  color: #fff;
+  /* width: 90%;
+  max-width: 400px; */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  position: relative;
+}
+
+.player-header img {
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.player-details {
+  text-align: right;
+}
+
+.player-details h3 {
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.player-details p {
+  margin: 0;
+  font-size: 1em;
+  opacity: 0.9;
+}
+
+.role-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #490075;
+  padding: 4px 8px;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  color: #fff;
+  font-size: 1.2em;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.stats {
+  background: #ffffff;
+  color: #333;
+  padding: 16px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  overflow: auto;
+}
+
+.stat-item {
+  flex: 1;
+  min-width: 70px;
+  text-align: center;
+}
+
+.stat-item h4 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.stat-item p {
+  margin: 4px 0 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.rankings {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #490075;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .player-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .player-details {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .role-badge {
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-item {
+    min-width: auto;
+  }
 }
