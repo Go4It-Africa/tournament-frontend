@@ -13,14 +13,14 @@ const CreateClubPage = () => {
     number_of_registered_categories: 0,
   });
 
-  const [validationErrors, setValidationErrors] = useState({
-    name: '',
-    email: '',
-    logo: '',
-    phone: '',
-    number_of_registered_teams: 0,
-    number_of_registered_categories: 0,
-  });
+  // const [validationErrors, setValidationErrors] = useState({
+  //   name: '',
+  //   email: '',
+  //   logo: '',
+  //   phone: '',
+  //   number_of_registered_teams: 0,
+  //   number_of_registered_categories: 0,
+  // });
 
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,9 +55,9 @@ const CreateClubPage = () => {
             value={formData.name}
             required
           />
-          {validationErrors.name && (
+          {/* {validationErrors.name && (
             <span style={{ color: 'red' }}>{validationErrors.name}</span>
-          )}
+          )} */}
         </Form.Group>
 
         <Form.Group controlId='clubEmail' className='mb-3'>
@@ -71,9 +71,9 @@ const CreateClubPage = () => {
             value={formData.email}
             required
           />
-          {validationErrors.email && (
+          {/* {validationErrors.email && (
             <span style={{ color: 'red' }}>{validationErrors.email}</span>
-          )}
+          )} */}
         </Form.Group>
 
         <Button variant='primary' type='submit'>
