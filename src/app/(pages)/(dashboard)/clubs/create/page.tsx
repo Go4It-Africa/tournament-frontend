@@ -35,9 +35,9 @@ const CreateClubPage = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(formData);
+  const handleSubmit = (/*e: React.ChangeEvent<HTMLInputElement>*/) => {
+    // e.preventDefault();
+    // alert(formData);
   };
 
   return (
