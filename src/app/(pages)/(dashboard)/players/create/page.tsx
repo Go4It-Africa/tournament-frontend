@@ -123,7 +123,7 @@ const CreatePlayer = () => {
   };
 
   return (
-    <>
+    <div className='container form-container'>
       <div className='form-step'>
         <h2 className='mb-4'>Create Player</h2>
         {apiError && <p className='mb-4 text-red-600'>{apiError}</p>}
@@ -235,7 +235,7 @@ const CreatePlayer = () => {
           </button>
         </Form>
       </div>
-    </>
+    </div>
   );
 };
 

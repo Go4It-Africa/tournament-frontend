@@ -41,8 +41,8 @@ const CreateClubPage = () => {
   };
 
   return (
-    <div>
-      <h1>Register Club</h1>
+    <div className='container form-container'>
+      <h1>Create Club</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='clubName' className='mb-3'>
           <Form.Label>Club Name</Form.Label>

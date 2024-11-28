@@ -48,6 +48,12 @@ h1 {
 .button:hover {
   background-color: #6c63ff;
 }
+
+.form-container {
+  max-width: 22.5rem !important;
+  text-align: left;
+  margin-top: 3.125rem;
+}
 .table-container {
   width: 100%; /* Matches the width of the device */
   overflow-x: auto;
