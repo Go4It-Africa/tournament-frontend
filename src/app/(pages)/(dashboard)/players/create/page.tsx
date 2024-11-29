@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
+import { Player } from 'types/data';
 //import { FormSelect } from '../../../../../_components/widgets/form-select/FormSelect';
 
 const CreatePlayer = () => {
@@ -11,12 +12,14 @@ const CreatePlayer = () => {
     last_name: '',
     date_of_birth: new Date().toISOString().split('T')[0],
     gender: 'Male',
-    weight: '',
+    weight: 0,
     type_of_sport: 'Football',
     club_id: 1,
     position: 'Attacker',
+    country: 'Kenya',
+    nationality: 'Kenyan',
   });
-  const [apiError, setApiError] = useState(null);
+  const [apiError, setApiError] = useState('');
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -88,38 +91,79 @@ const CreatePlayer = () => {
 
     setIsSubmitting(true);
 
-    //return fetch(`http://localhost:3000/v1/players`, {
-    return fetch(
-      'https://go4it-backend-08e4d2013568.herokuapp.com/v1/players',
-      {
+    const postPlayer = async (data: Player) => {
+      setIsSubmitting(true);
+
+      const response = await fetch('/api/player', {
         method: 'POST',
         headers: {
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
-      }
-    )
-      .then((response) => response.json())
-      .then(() => {
-        setFormData({
-          first_name: '',
-          last_name: '',
-          date_of_birth: '',
-          gender: 'Male',
-          weight: '',
-          type_of_sport: 'Football',
-          club_id: 1,
-          position: 'Attacker',
-        });
-
-        setSuccess(true);
-        setIsSubmitting(false);
-      })
-      .catch((error) => {
-        //console.error('Error:', error);
-        setApiError(error.message);
-        setIsSubmitting(false);
+        body: JSON.stringify(data),
       });
+
+      const result = await response.json();
+
+      return result;
+    };
+
+    const data = await postPlayer(formData);
+
+    if (data.status === 200) {
+      setIsSubmitting(false);
+
+      setFormData({
+        first_name: '',
+        last_name: '',
+        date_of_birth: '',
+        gender: 'Male',
+        weight: 0,
+        type_of_sport: 'Football',
+        club_id: 1,
+        position: 'Attacker',
+        country: 'Kenya',
+        nationality: 'Kenya',
+      });
+
+      setSuccess(true);
+    } else {
+      setApiError(data.error);
+      setIsSubmitting(false);
+    }
+
+    //return fetch(`http://localhost:3000/v1/players`, {
+    //return fetch(
+    //   'https://go4it-backend-08e4d2013568.herokuapp.com/v1/players',
+    //   {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(formData),
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then(() => {
+    //     setFormData({
+    //       first_name: '',
+    //       last_name: '',
+    //       date_of_birth: '',
+    //       gender: 'Male',
+    //       weight: '',
+    //       type_of_sport: 'Football',
+    //       club_id: 1,
+    //       position: 'Attacker',
+    //     });
+
+    //     setSuccess(true);
+    //     setIsSubmitting(false);
+    //   })
+    //   .catch((error) => {
+    //     //console.error('Error:', error);
+    //     setApiError(error.message);
+    //     setIsSubmitting(false);
+    //   });
   };
 
   return (
@@ -188,6 +232,7 @@ const CreatePlayer = () => {
             <Form.Control
               type='number'
               name='weight'
+              min={0}
               placeholder='Enter weight (kg)'
               onChange={handleFormDataChange}
               value={formData.weight}
