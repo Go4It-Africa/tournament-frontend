@@ -11,7 +11,7 @@ const Home = () => {
         <Link href='/tournaments' className='button'>
           View Tournaments
         </Link> */}
-        <Link href='/clubs/create' className='button'>
+        {/* <Link href='/clubs/create' className='button'>
           Register Club
         </Link>
         <Link href='/players/create' className='button'>
@@ -19,6 +19,10 @@ const Home = () => {
         </Link>
         <Link href='/players' className='button'>
           View Players
+        </Link> */}
+
+        <Link href='/login' className='button'>
+          Log In
         </Link>
       </div>
     </>
