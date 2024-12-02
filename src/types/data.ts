@@ -1,3 +1,11 @@
+export interface SignUpProps {
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  errors: never;
+}
+
 export interface Player {
   first_name: string;
   last_name: string;
