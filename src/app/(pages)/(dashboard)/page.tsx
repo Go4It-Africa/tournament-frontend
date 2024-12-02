@@ -21,8 +21,8 @@ const Home = () => {
           View Players
         </Link> */}
 
-        <Link href='/login' className='button'>
-          Log In
+        <Link href='/signup' className='button'>
+          Sign Up
         </Link>
       </div>
     </>
