@@ -1,47 +1,35 @@
-// export const formErrors = (formdata: any) => {
-//   const { email, password } = formdata;
+import { z } from 'zod';
 
-//   const newErrors: any = {};
-
-//   if (!email) {
-//     newErrors.email = 'Email is required';
-//   } else if (!/^\S+@\S+\.\S+$/.test(email)) {
-//     newErrors.email = 'Please enter a valid email address.';
-//   } else if (!password) {
-//     newErrors.password = 'Password is required';
-//   } else if (password.length < 6) {
-//     newErrors.password = 'Password must be at least 6 characters long.';
-//   }
-
-//   return newErrors;
-// };
-
-export interface ValidationDataProps {
-  textErrors?: string | string[];
-  email?: string | undefined;
-  password?: string | undefined;
-  checkbox?: string;
-  confirm_password?: string;
-}
-
-export const formErrors =
-  (/*formdata: ValidationDataProps, type: string */) => {
-    //const { email, password, checkbox, textErrors, confirm_password } = formdata;
-    // const newErrors: any = {};
-    // // if (type === 'text' && textErrors?.length) {
-    // //   newErrors.textErrors = 'This field is required!';
-    // // } else if (type === 'email' && !email) {
-    // //   newErrors.email = 'Email is required!';
-    // // } else if (type === 'email' && email && !/^\S+@\S+\.\S+$/.test(email)) {
-    // //   newErrors.email = 'Please enter a valid email address!';
-    // // } else if (type === 'password' && !password) {
-    // //   newErrors.password = 'Password is required!';
-    // // } else if (type === 'password' && password && password.length < 6) {
-    // //   newErrors.password = 'Password must be at least 6 characters long!';
-    // // } else if (type === 'password' && password !== confirm_password) {
-    // //   newErrors.confirm_password = 'Passwords do not match!';
-    // // } else if (type === 'checkbox' && !checkbox) {
-    // //   newErrors.checkbox = 'Please accept';
-    // // }
-    // return newErrors;
-  };
+export const SignupFormSchema = z.object({
+  first_name: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+  last_name: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+  email: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+  password: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+  // date_of_birth: z.string({
+  //   required_error: 'This field is required',
+  //   invalid_type_error: 'This field must be a string',
+  // }),
+  // gender: z.string({
+  //   required_error: 'This field is required',
+  //   invalid_type_error: 'This field must be a string',
+  // }),
+  // weight: z.number({
+  //   required_error: 'This field is required',
+  //   invalid_type_error: 'This field must be a number',
+  // }),
+  // type_of_sport: z.string({
+  //   required_error: 'This field is required',
+  // })
+});
