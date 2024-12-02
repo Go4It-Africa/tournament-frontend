@@ -20,12 +20,12 @@
     ],
     "baseUrl": "src/",
     "paths": {
-      // "@/*": ["./src/*"]
       "@/components/*": ["app/_components/*"],
       "@/pages/*": ["app/(pages)/*"],
       "@/styles/*": ["../styles/*"],
-      "@/utils/*": ["app/_utils/*"],
-      "@/api/*": ["api/*"]
+      "@/utils/*": ["_utils/*"],
+      "@/api/*": ["api/*"],
+      "@/types/*": ["types/*"]
     }
   },
   "include": [
