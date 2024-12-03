@@ -33,3 +33,14 @@ export const SignupFormSchema = z.object({
   //   required_error: 'This field is required',
   // })
 });
+
+export const LoginFormSchema = z.object({
+  email: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+  password: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
+});
