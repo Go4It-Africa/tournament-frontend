@@ -1,7 +1,7 @@
 'use client';
 
 import { useActionState } from 'react';
-import { signUpHandler } from '@/pages/(auth)/sign-up/action';
+import { signUpHandler } from '@/pages/auth/sign-up/action';
 
 const SignUpPage = () => {
   const [state, formAction, pending] = useActionState(

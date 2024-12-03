@@ -1,6 +1,6 @@
 'use server';
 
-import { SignupFormSchema } from '@/utils/validation-errors';
+import { SignupFormSchema } from 'app/_utils/validation-errors';
 import bcrypt from 'bcrypt';
 
 export const signUpHandler = async (prevState: unknown, formData: FormData) => {
