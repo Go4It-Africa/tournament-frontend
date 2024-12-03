@@ -20,7 +20,7 @@ const Login = () => {
           <p className='mb-4 text-success'>Player created successfully!</p>
         )} */}
         <Form action={formAction}>
-          {/* Tournament Name */}
+          {/* Email */}
           <Form.Group controlId='email' className='mb-3'>
             <Form.Label>Email</Form.Label>
             <Form.Control
