@@ -18,15 +18,15 @@ const protectedRoutes = [
 ];
 
 const authRouters = [
-  '/sign-in',
-  '/sign-up',
-  '/forget-password',
-  '/reset-password',
+  '/auth/login',
+  '/auth//sign-up',
+  '/auth//forget-password',
+  '/auth//reset-password',
 ];
 
 //const publicRouters = ['/privacy-policy', '/terms-and-conditions'];
 
-const checkTokenStatus = (request: NextRequest) => {
+const checkTokenStatus = async (request: NextRequest) => {
   //const hasToken = request.cookies.has('token');
   //console.log('hasToken', hasToken);
   //   const tokenName = token;
@@ -34,13 +34,13 @@ const checkTokenStatus = (request: NextRequest) => {
   //   const user_token = request.cookies.get(tokenName)?.value;
 
   //   const dashboardUrl = new URL('/', request.url);
-  const loginUrl = new URL('/sign-in', request.url);
+  //const loginUrl = await new URL('/auth/login', request.url);
   //   const path = request.nextUrl.pathname;
   //   const hasToken = request.cookies.has(tokenName);
 
   //   //if no token and user tries to access protected routes, redirect to login
   //if (!hasToken) {
-  return NextResponse.redirect(loginUrl);
+  //return NextResponse.redirect(loginUrl);
   //}
 
   //   try {
@@ -123,17 +123,18 @@ const checkTokenStatus = (request: NextRequest) => {
 //   );
 // };
 
-export function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   //setCSPHeaders(request);
 
-  return checkTokenStatus(request);
+  //return await checkTokenStatus(request);
+  return NextResponse.redirect(new URL('/auth/login', request.url));
 }
 
 export const config = {
   matcher: [
     {
       source:
-        '/((?!auth|api|_next/static|_next/image|static|favicon.ico|_components|_utils|images).*)',
+        '/((?!auth|api|_next/static|_next/image|static|favicon.ico|_components|_utils|images|sitemap.xml|robots.txt).*)',
     },
   ],
 };
