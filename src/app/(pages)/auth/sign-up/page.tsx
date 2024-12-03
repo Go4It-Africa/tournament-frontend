@@ -14,7 +14,7 @@ const SignUpPage = () => {
   return (
     <div className='container form-container'>
       <div className='form-step'>
-        <h2 className='mb-4'>Log In</h2>
+        <h2 className='mb-4'>Sign Up</h2>
         <Form action={formAction}>
           <Form.Group controlId='first_name' className='mb-3'>
             <Form.Label>First Name</Form.Label>
