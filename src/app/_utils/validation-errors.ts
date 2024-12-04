@@ -17,6 +17,10 @@ export const SignupFormSchema = z.object({
     required_error: 'This field is required',
     invalid_type_error: 'This field must be a string',
   }),
+  confirm_password: z.string({
+    required_error: 'This field is required',
+    invalid_type_error: 'This field must be a string',
+  }),
   // date_of_birth: z.string({
   //   required_error: 'This field is required',
   //   invalid_type_error: 'This field must be a string',
