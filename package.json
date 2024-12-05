@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "migrate:dev": "npx knex migrate:latest --knexfile src/db/database.ts --env development && cd db/seeds/dev && npx knex seed:run && cd ../../",
+    "migrate:staging": "npx knex migrate:latest --knexfile src/db/database.ts --env staging && cd db/seeds/staging && npx knex seed:run && cd ../../",
+    "migrate:prod": "npx knex migrate:latest --knexfile src/db/database.ts --env production && cd db/seeds/prod && npx knex seed:run && cd ../../",
+    "migrate:rollback": "npx knex migrate:rollback --env development"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
