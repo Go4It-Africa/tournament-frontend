@@ -7,11 +7,12 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: 'localhost',
-      port: 5432,
-      database: 'go4it_sports_backend_dev',
-      user: 'admin_go4it_sports',
-      password: '9GCKqwYk8giGjb2XnKWK',
+      host: process.env.DEV_PG_HOST,
+      port: process.env.DEV_PG_HOST,
+      database: process.env.DEV_PG_DB,
+      user: process.env.DEV_PG_ADMIN,
+      password: process.env.DEV_PG_PASSWORD,
+      ssl: false,
     },
     pool: {
       min: 2,
@@ -29,11 +30,12 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      host: 'localhost',
-      port: 5432,
-      database: 'go4it_sports_backend_dev',
-      user: 'admin_go4it_sports',
-      password: '9GCKqwYk8giGjb2XnKWK',
+      host: process.env.STAGING_PG_HOST,
+      port: process.env.STAGING_PG_HOST,
+      database: process.env.STAGING_PG_DB,
+      user: process.env.STAGING_PG_ADMIN,
+      password: process.env.STAGING_PG_PASSWORD,
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
@@ -51,11 +53,12 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      host: 'localhost',
-      port: 5432,
-      database: 'go4it_sports_backend_prod',
-      user: 'admin_go4it_sports',
-      password: '9GCKqwYk8giGjb2XnKWK',
+      host: process.env.PROD_PG_HOST,
+      port: process.env.PROD_PG_HOST,
+      database: process.env.PROD_PG_DB,
+      user: process.env.PROD_PG_ADMIN,
+      password: process.env.PROD_PG_PASSWORD,
+      ssl: { rejectUnauthorized: false },
     },
     pool: {
       min: 2,
