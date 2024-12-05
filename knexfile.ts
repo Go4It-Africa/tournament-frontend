@@ -21,6 +21,9 @@ module.exports = {
       directory: 'src/db/migrations/dev',
       tableName: 'knex_migrations',
     },
+    seeds: {
+      directory: 'src/db/seeds/dev',
+    },
   },
 
   staging: {
@@ -40,6 +43,9 @@ module.exports = {
       directory: 'src/db/migrations/staging',
       tableName: 'knex_migrations',
     },
+    seeds: {
+      directory: 'src/db/seeds/dev',
+    },
   },
 
   production: {
@@ -58,6 +64,9 @@ module.exports = {
     migrations: {
       directory: 'src/db/migrations/prod',
       tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: 'src/db/seeds/dev',
     },
   },
 };
