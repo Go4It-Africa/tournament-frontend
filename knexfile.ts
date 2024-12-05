@@ -5,27 +5,39 @@
  */
 module.exports = {
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './dev.sqlite3',
-    },
-  },
-
-  staging: {
     client: 'postgresql',
     connection: {
-      host: '',
-      port: 3306,
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      host: 'localhost',
+      port: 5432,
+      database: 'go4it_sports_backend_dev',
+      user: 'admin_go4it_sports',
+      password: '9GCKqwYk8giGjb2XnKWK',
     },
     pool: {
       min: 2,
       max: 10,
     },
     migrations: {
-      directory: '',
+      directory: 'src/db/migrations/dev',
+      tableName: 'knex_migrations',
+    },
+  },
+
+  staging: {
+    client: 'postgresql',
+    connection: {
+      host: 'localhost',
+      port: 5432,
+      database: 'go4it_sports_backend_dev',
+      user: 'admin_go4it_sports',
+      password: '9GCKqwYk8giGjb2XnKWK',
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      directory: 'src/db/migrations/staging',
       tableName: 'knex_migrations',
     },
   },
@@ -33,18 +45,18 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      host: '',
-      port: 3306,
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      host: 'localhost',
+      port: 5432,
+      database: 'go4it_sports_backend_prod',
+      user: 'admin_go4it_sports',
+      password: '9GCKqwYk8giGjb2XnKWK',
     },
     pool: {
       min: 2,
       max: 10,
     },
     migrations: {
-      directory: '',
+      directory: 'src/db/migrations/prod',
       tableName: 'knex_migrations',
     },
   },
