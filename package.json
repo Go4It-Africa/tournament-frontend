@@ -9,12 +9,13 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "migrate:dev": "npx knex migrate:latest --knexfile src/db/database.ts --env development && cd db/seeds/dev && npx knex seed:run && cd ../../",
-    "migrate:staging": "npx knex migrate:latest --knexfile src/db/database.ts --env staging && cd db/seeds/staging && npx knex seed:run && cd ../../",
-    "migrate:prod": "npx knex migrate:latest --knexfile src/db/database.ts --env production && cd db/seeds/prod && npx knex seed:run && cd ../../",
-    "migrate:rollback": "npx knex migrate:rollback --env development"
+    "migrate:dev": "npx npx ts-node ./node_modules/.bin/knex migrate:latest --knexfile src/db/database.ts --env development && cd db/seeds/dev && npx ts-node ./node_modules/.bin/knex seed:run && cd ../../",
+    "migrate:staging": "npx npx ts-node ./node_modules/.bin/knex migrate:latest --knexfile src/db/database.ts --env staging && cd db/seeds/staging && npx npx ts-node ./node_modules/.bin/knex seed:run && cd ../../",
+    "migrate:prod": "npx npx ts-node ./node_modules/.bin/knex migrate:latest --knexfile src/db/database.ts --env production && cd db/seeds/prod && npx npx ts-node ./node_modules/.bin/knex seed:run && cd ../../",
+    "migrate:rollback": "npx npx ts-node ./node_modules/.bin/knex migrate:rollback --env development"
   },
   "dependencies": {
+    "@next/env": "^15.0.4",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "knex": "^3.1.0",
