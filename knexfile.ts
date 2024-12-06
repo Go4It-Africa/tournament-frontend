@@ -3,15 +3,21 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+// require('dotenv').config();
+// require('./envConfig');
+import './envConfig.ts';
+
+console.log('THE PROCESS', process.env.DEV_PG_HOST);
+
 module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: process.env.DEV_PG_HOST,
-      port: process.env.DEV_PG_HOST,
-      database: process.env.DEV_PG_DB,
-      user: process.env.DEV_PG_ADMIN,
-      password: process.env.DEV_PG_PASSWORD,
+      host: process.env.NEXT_PUBLIC_DEV_PG_HOST,
+      port: process.env.NEXT_PUBLIC_DEV_PG_HOST,
+      database: process.env.NEXT_PUBLIC_DEV_PG_DB,
+      user: process.env.NEXT_PUBLIC_DEV_PG_ADMIN,
+      password: process.env.NEXT_PUBLIC_DEV_PG_PASSWORD,
       ssl: false,
     },
     pool: {
