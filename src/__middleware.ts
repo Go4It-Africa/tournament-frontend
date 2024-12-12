@@ -19,9 +19,9 @@ const protectedRoutes = [
 
 const authRouters = [
   '/auth/login',
-  '/auth//sign-up',
-  '/auth//forget-password',
-  '/auth//reset-password',
+  '/auth/sign-up',
+  '/auth/forget-password',
+  '/auth/reset-password',
 ];
 
 //const publicRouters = ['/privacy-policy', '/terms-and-conditions'];
@@ -127,7 +127,8 @@ export default async function middleware(request: NextRequest) {
   //setCSPHeaders(request);
 
   //return await checkTokenStatus(request);
-  return NextResponse.redirect(new URL('/auth/login', request.url));
+  // return NextResponse.redirect(new URL('/auth/login', request.url));
+  return NextResponse.redirect(new URL('/', request.url));
 }
 
 export const config = {
