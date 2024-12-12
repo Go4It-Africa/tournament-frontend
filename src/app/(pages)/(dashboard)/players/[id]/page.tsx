@@ -36,6 +36,7 @@ const ViewPlayer = (url: never) => {
   type PlayerMetric = {
     metric: string;
     value: string | number | null;
+    max: number;
   };
 
   console.log('searchParams', searchParams);
@@ -44,20 +45,38 @@ const ViewPlayer = (url: never) => {
     {
       metric: 'Distance Covered (km)',
       value: parseFloat(average_distance_km || '0'),
+      max: 5,
     },
     {
       metric: 'Distance Covered Per Minute (metres/min)',
       value: parseFloat(distance_per_minute || '0'),
+      max: 100,
     },
-    { metric: 'Top Speed (metres/s)', value: parseFloat(top_speed || '0') },
-    { metric: 'Duration Played (min)', value: parseFloat(duration || '0') },
+    {
+      metric: 'Top Speed (metres/s)',
+      value: parseFloat(top_speed || '0'),
+      max: 10,
+    },
+    {
+      metric: 'Duration Played (min)',
+      value: parseFloat(duration || '0'),
+      max: 70,
+    },
     {
       metric: 'Energy Exerted (kcal)',
       value: parseFloat(energy_exerted_kcal || '0'),
+      max: 100,
     },
-    { metric: 'Work Rate', value: parseFloat(work_ratio || '0') },
-    { metric: 'Impact', value: parseFloat(impact || '0') },
+    { metric: 'Work Rate', value: parseFloat(work_ratio || '0'), max: 50 },
+    { metric: 'Impact', value: parseFloat(impact || '0'), max: 10 },
   ];
+
+  const normalizeMetrics = (metrics: PlayerMetric[]) => {
+    return metrics.map(({ metric, value, max }) => ({
+      metric,
+      value: value ? (Number(value) / max) * 10 : 0, // Normalize to scale of 0–10
+    }));
+  };
 
   //const player = url['searchParams'];
 
@@ -164,7 +183,7 @@ const ViewPlayer = (url: never) => {
               <h3 className='text-left my-[1.25rem]'>
                 Player Performance Metrics
               </h3>
-              <RadialChart data={playerMetrics} />
+              <RadialChart data={normalizeMetrics(playerMetrics)} />
             </div>
           )}
 
