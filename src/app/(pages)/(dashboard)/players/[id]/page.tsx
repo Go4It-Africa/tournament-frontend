@@ -1,31 +1,58 @@
-// 'use client';
+'use client';
 // import { useSearchParams } from 'next/navigation';
+import RadialChart from 'app/_compnents/RadialChart';
+
+import dynamic from 'next/dynamic';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-const ViewPlayer = async (url: never) => {
-  const player = await url['searchParams'];
+const ViewPlayer = (url: never) => {
+  const [isClient, setIsClient] = useState<boolean>(false);
 
-  const {
-    average_distance_km,
-    distance_per_minute,
-    energy_exerted_kcal,
-    //max_acceleration,
-    //max_deceleration,
-    top_speed,
-    weight,
-    work_ratio,
-    nationality,
-    club_id,
-    //country,
-    date_of_birth,
-    first_name,
-    gender,
-    last_name,
-    position,
-    //type_of_sport,
-  } = player;
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const searchParams = useSearchParams();
+  const average_distance_km = searchParams.get('average_distance_km');
+  const distance_per_minute = searchParams.get('distance_per_minute');
+  const energy_exerted_kcal = searchParams.get('energy_exerted_kcal');
+  const top_speed = searchParams.get('top_speed');
+  const weight = searchParams.get('weight');
+  const work_ratio = searchParams.get('work_ratio');
+  const nationality = searchParams.get('nationality');
+  const club_id = searchParams.get('club_id');
+  const date_of_birth = searchParams.get('date_of_birth');
+  const first_name = searchParams.get('first_name');
+  const gender = searchParams.get('gender');
+  const last_name = searchParams.get('last_name');
+  const position = searchParams.get('position');
+  const type_of_sport = searchParams.get('type_of_sport');
+
+  //const player = url['searchParams'];
+
+  // const {
+  //   average_distance_km,
+  //   distance_per_minute,
+  //   energy_exerted_kcal,
+  //   //max_acceleration,
+  //   //max_deceleration,
+  //   top_speed,
+  //   weight,
+  //   work_ratio,
+  //   nationality,
+  //   club_id,
+  //   //country,
+  //   date_of_birth,
+  //   first_name,
+  //   gender,
+  //   last_name,
+  //   position,
+  //   //type_of_sport,
+  // } = player;
 
   //const age = Date.now() - date_of_birth;
 
@@ -103,6 +130,8 @@ const ViewPlayer = async (url: never) => {
             <p>No recent trainings found for this player.</p>
           </div>
         )}
+
+        {isClient && <RadialChart />}
 
         <Link href='/players' className='button'>
           <button>Go Back</button>
