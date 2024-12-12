@@ -83,7 +83,6 @@ export async function GET() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data?.map((row: any, index: number) => {
       if (index > 0) {
-        console.log('THE ROW', row);
         player_data.push({
           //id: row[0],
           first_name: row[0],
