@@ -1,6 +1,4 @@
-// Assuming a Next.js app with TypeScript and Tailwind CSS
-// Install recharts using `npm install recharts`
-
+'use client';
 import React from 'react';
 import {
   Radar,
