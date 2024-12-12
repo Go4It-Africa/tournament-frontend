@@ -72,7 +72,7 @@ export async function GET() {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'A:V',
+      range: 'A:W',
       majorDimension: 'ROWS',
     });
     const data = await response.data.values;
@@ -83,6 +83,7 @@ export async function GET() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data?.map((row: any, index: number) => {
       if (index > 0) {
+        console.log('THE ROW', row);
         player_data.push({
           //id: row[0],
           first_name: row[0],
@@ -96,16 +97,15 @@ export async function GET() {
           position: row[8],
           club_id: row[9],
           date_created: row[10],
-          game_duration: row[11],
-          average_distance_km: row[12],
-          energy_exerted_kcal: row[13],
-          player_load: row[14],
-          top_speed: row[15],
-          distance_per_minute: row[16],
-          power_score_weight_per_kg: row[17],
-          work_ratio: row[18],
-          max_deceleration: row[19],
-          max_acceleration: row[20],
+          game_day: row[11],
+          game_duration: row[12],
+          average_distance_km: row[13],
+          energy_exerted_kcal: row[14],
+          player_load: row[15],
+          top_speed: row[16],
+          distance_per_minute: row[17],
+          work_ratio: row[19],
+          impact: row[22],
         });
       }
     });
