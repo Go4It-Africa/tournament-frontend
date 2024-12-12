@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Home = () => {
   return (
     <>
-      <div className='container flex justify-center items-center mt-[50%] -translate-y-1/2'>
+      <div className='container flex justify-center items-center'>
         {/* <Link href='/tournaments/create' className='button'>
           Register Tournament
         </Link>
@@ -20,10 +20,13 @@ const Home = () => {
         <Link href='/players' className='button'>
           View Players
         </Link> */}
-
-        <Link href='/signup' className='button'>
-          Sign Up
+        <Link href='/players' className='button'>
+          View Players
         </Link>
+
+        {/* <Link href='/signup' className='button'>
+          Sign Up
+        </Link> */}
       </div>
     </>
   );
