@@ -153,13 +153,13 @@ const ViewPlayer = (url: never) => {
             </div>
           )}
 
-          {!average_distance_km && (
+          {parseFloat(average_distance_km || '0') < 1 && (
             <div className='text-left'>
               <p>No recent trainings found for this player.</p>
             </div>
           )}
 
-          {isClient && average_distance_km && (
+          {isClient && parseFloat(average_distance_km || '0') > 1 && (
             <div className='w-full flex flex-col items-center'>
               <h3 className='text-left my-[1.25rem]'>
                 Player Performance Metrics
