@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { SessionProvider } from 'next-auth/react';
 //import { Container, Col, Row, Button } from 'react-bootstrap';
 
-const Home = () => {
+const Home = ({}) => {
   return (
-    <>
+    <SessionProvider session={null}>
       <div className='container flex justify-center items-center'>
         {/* <Link href='/tournaments/create' className='button'>
           Register Tournament
@@ -28,7 +29,7 @@ const Home = () => {
           Sign Up
         </Link> */}
       </div>
-    </>
+    </SessionProvider>
   );
 };
 
