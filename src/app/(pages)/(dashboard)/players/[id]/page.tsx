@@ -1,6 +1,6 @@
 'use client';
 // import { useSearchParams } from 'next/navigation';
-import RadialChart from 'app/_compnents/RadialChart';
+import RadialChart from '@/components/RadialChart';
 
 import dynamic from 'next/dynamic';
 
