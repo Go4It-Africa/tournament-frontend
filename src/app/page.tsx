@@ -1,7 +1,9 @@
+import Nav from '@/components/Nav';
+
 const page = () => {
   return (
     <div className='w-full'>
-      <h1>Hello Page</h1>
+      <Nav />
     </div>
   );
 };
