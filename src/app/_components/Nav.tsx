@@ -1,3 +1,5 @@
+import { signIn, signOut } from 'next-auth/react';
+
 interface NavProps {
   title: string;
   href: string;
@@ -34,7 +36,8 @@ const items = [
   },
 ];
 
-const Nav = () => {
+const Nav = ({ session }: any) => {
+  console.log('THE SESSION', session);
   return (
     <nav className='w-full mt-[1.25rem]'>
       <ul className='flex justify-center'>
@@ -49,6 +52,23 @@ const Nav = () => {
             />
           );
         })}
+        {session && (
+          <li className='mx-3'>
+            {session.user.email}
+            <a
+              onClick={() => {
+                signOut({ callbackUrl: '/' });
+              }}
+            >
+              Logout
+            </a>
+          </li>
+        )}
+        {!session && (
+          <li onClick={() => signIn('keycloak')} className='mx-3'>
+            Log In
+          </li>
+        )}
       </ul>
     </nav>
   );
